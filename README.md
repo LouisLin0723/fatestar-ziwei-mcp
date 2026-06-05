@@ -4,10 +4,7 @@
 
 **排盘免费、匿名**(不要 key);**郑大钱解读**付费(需 `fs_live_` key)。引擎 FateStar 自建,102 颗星 · 三合派四化 · 真太阳时 · 0 第三方排盘库。
 
-两种接入,都是 MCP 标准协议,**无需任何桥接代理**:
-
-- **远程 Streamable HTTP** —— 零安装,配置里填一个 URL
-- **本地 stdio** —— `npx @fatestar/ziwei-mcp`,自带引擎,**断网也能排盘**
+**接入只需一个 URL** —— 标准 MCP **Streamable HTTP**,零安装、始终最新、无需任何桥接代理。
 
 [English below ↓](#english)
 
@@ -25,9 +22,7 @@
 
 ---
 
-## 安装
-
-### 远程 Streamable HTTP(推荐,零安装)
+## 安装(零安装,填一个 URL)
 
 支持 MCP 的客户端,配置里填一个地址即可:
 
@@ -52,48 +47,20 @@
 }
 ```
 
-### 本地 stdio(npx,自带引擎,断网可用)
-
-偏好本地进程的客户端,用 npx 拉开源包(引擎已 bundle 进包,排盘 0 网络):
-
-```jsonc
-{
-  "mcpServers": {
-    "ziwei": { "command": "npx", "args": ["-y", "@fatestar/ziwei-mcp"] }
-  }
-}
-```
-
-郑大钱解读把 key 放进 env:
-
-```jsonc
-{
-  "mcpServers": {
-    "ziwei": {
-      "command": "npx",
-      "args": ["-y", "@fatestar/ziwei-mcp"],
-      "env": { "FATESTAR_API_KEY": "fs_live_xxxxxxxx" }
-    }
-  }
-}
-```
-
-> 远程 = 始终最新、零安装;stdio = 本地排盘、断网可用。二选一,排盘能力一致。
-
 重启客户端,即可对 AI 说:「帮我排 1990 年 7 月 23 日早上 8 点出生男性的紫微命盘」。
 
 ---
 
 ## Agent 客户端速查
 
-只要客户端支持 MCP,远程 / 本地任选其一即可接入。地址统一 `https://www.fatestar.top/api/mcp`。
+只要客户端支持 MCP,填同一个地址 `https://www.fatestar.top/api/mcp` 即可接入。
 
-| Agent | 远程 (HTTP) | 本地 (stdio) | 配置位置 |
-| --- | --- | --- | --- |
-| Claude Desktop / Claude Code | 填 url | `npx @fatestar/ziwei-mcp` | `claude_desktop_config.json` |
-| Cursor | 填 url | `npx` | `~/.cursor/mcp.json` |
-| OpenCode | 填 url | `npx` | `opencode.json` |
-| Codex / OpenClaw / Cline / 飞书 CLI / 其他 | 填 url | `npx` | 各自 MCP 配置 |
+| Agent | 配置位置 |
+| --- | --- |
+| Claude Desktop / Claude Code | `claude_desktop_config.json` |
+| Cursor | `~/.cursor/mcp.json` |
+| OpenCode | `opencode.json` |
+| Codex / OpenClaw / Cline / 飞书 CLI / 其他 | 各自 MCP 配置 |
 
 ---
 
@@ -112,7 +79,7 @@
 | `longitude` `timezoneOffset` | | 经度 + 时区,传了即启用真太阳时修正 |
 | `targetYear` `targetMonth` `targetDay` `targetHour` | | 仅 `ziwei_transits`:运限目标(默认当年 + 本命农历月日 + 出生时辰) |
 | `question` | | 仅 `ziwei_reading`:要问郑大钱的问题 |
-| `apiKey` | | 仅 `ziwei_reading`:`fs_live_` key(也可由环境变量 `FATESTAR_API_KEY` 提供) |
+| `apiKey` | | 仅 `ziwei_reading`:`fs_live_` key(也可由 Authorization 头提供) |
 
 ### 拿一个 key
 
@@ -147,17 +114,15 @@
 
 102 stars, sanhe four-transformations school, true solar time, **zero third-party charting library**. Charting is free and anonymous.
 
-Two ways to connect, both standard MCP, **no bridge proxy needed**:
+**One URL to connect** — standard MCP Streamable HTTP, zero install, always up to date, no bridge proxy:
 
 ```jsonc
-// Remote Streamable HTTP (zero install)
 { "mcpServers": { "ziwei": { "url": "https://www.fatestar.top/api/mcp" } } }
-
-// Local stdio (open-source npm package, bundles the engine — charts offline)
-{ "mcpServers": { "ziwei": { "command": "npx", "args": ["-y", "@fatestar/ziwei-mcp"] } } }
 ```
 
-Birth params: `year` `month` `day` `hour` (0–23) `gender` (`male`/`female`) required; `minute` `calendarType` (`solar`/`lunar`) `isLeapMonth` `longitude` `timezoneOffset` optional. `ziwei_transits` adds `targetYear/Month/Day/Hour`; `ziwei_reading` adds `question` + `apiKey`.
+Add `"headers": { "Authorization": "Bearer fs_live_xxxxxxxx" }` for the paid reading.
+
+Birth params: `year` `month` `day` `hour` (0–23) `gender` (male/female) required; `minute` `calendarType` (solar/lunar) `isLeapMonth` `longitude` `timezoneOffset` optional. `ziwei_transits` adds `targetYear/Month/Day/Hour`; `ziwei_reading` adds `question`.
 
 Skill version → https://github.com/LouisLin0723/fatestar-ziwei-skill · Full docs → https://www.fatestar.top/docs
 

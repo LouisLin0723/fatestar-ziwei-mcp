@@ -22,7 +22,7 @@ Email **support@fatestar.top** with the subject prefixed `[Security]`, including
 
 覆盖 / Covers:
 - 本仓库的接入文档（`README.md`）/ This repo's integration docs
-- npm 包 `@fatestar/ziwei-mcp` / The npm package
+- 远程 MCP 接入配置 / Remote MCP integration config
 
 不在范围 (Out of Scope):
 - FateStar API 后端（`www.fatestar.top`）/ The FateStar API backend
