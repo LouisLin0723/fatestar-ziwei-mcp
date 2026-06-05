@@ -2,7 +2,7 @@
 
 > 紫微斗数 (Zi Wei Dou Shu / Purple Star Astrology) 排盘引擎 MCP server —— 让 Claude / Cursor / 任意 MCP 客户端直接生成完整命盘 + 调「郑大钱」AI 命理师深度解读。
 
-**排盘免费、匿名**(不要 key);**郑大钱解读**付费(需 `fs_live_` key)。引擎 FateStar 自建,102 颗星 · 三合派四化 · 真太阳时 · 0 第三方排盘库。
+**排盘免费、匿名**(不要 key);**郑大钱解读**付费(需 `FSFSKey` key)。引擎 FateStar 自建,102 颗星 · 三合派四化 · 真太阳时 · 0 第三方排盘库。
 
 **接入只需一个 URL** —— 标准 MCP **Streamable HTTP**,零安装、始终最新、无需任何桥接代理。
 
@@ -18,7 +18,7 @@
 | `ziwei_transits` | 6 层运限:大限 / 小限 / 流年 / 流月 / 流日 / 流时,每层带命宫 + 四化 + 双轨干支 | 免费 |
 | `ziwei_reading` | 「郑大钱」AI 命理师:知识引擎 + 古籍锚定深度断盘问事 | 付费(扣积分) |
 
-排盘(`ziwei_chart` / `ziwei_transits`)匿名免费;只有 `ziwei_reading` 需 `fs_live_` key。
+排盘(`ziwei_chart` / `ziwei_transits`)匿名免费;只有 `ziwei_reading` 需 `FSFSKey` key。
 
 ---
 
@@ -41,7 +41,7 @@
   "mcpServers": {
     "ziwei": {
       "url": "https://www.fatestar.top/api/mcp",
-      "headers": { "Authorization": "Bearer fs_live_xxxxxxxx" }
+      "headers": { "Authorization": "Bearer FSFSKey20260606XXXXXXXXXXXXXXXXXXXX" }
     }
   }
 }
@@ -79,11 +79,11 @@
 | `longitude` `timezoneOffset` | | 经度 + 时区,传了即启用真太阳时修正 |
 | `targetYear` `targetMonth` `targetDay` `targetHour` | | 仅 `ziwei_transits`:运限目标(默认当年 + 本命农历月日 + 出生时辰) |
 | `question` | | 仅 `ziwei_reading`:要问郑大钱的问题 |
-| `apiKey` | | 仅 `ziwei_reading`:`fs_live_` key(也可由 Authorization 头提供) |
+| `apiKey` | | 仅 `ziwei_reading`:`FSFSKey` key(也可由 Authorization 头提供) |
 
 ### 拿一个 key
 
-排盘不需要 key。郑大钱解读:到 https://www.fatestar.top 注册免费会员 → 做新手任务领积分 → 开发者中心创建 `fs_live_` key。免费会员每天 3 积分(北京时间 21:00 重置)。
+排盘不需要 key。郑大钱解读:到 https://www.fatestar.top 注册免费会员 → 做新手任务领积分 → 开发者中心创建 `FSFSKey` key。免费会员每天 3 积分(北京时间 21:00 重置)。
 
 ---
 
@@ -110,7 +110,7 @@
 
 - `ziwei_chart` — full natal chart (free)
 - `ziwei_transits` — six transit levels: decade / minor-year / annual / monthly / daily / hourly (free)
-- `ziwei_reading` — the 郑大钱 (Zheng Da Qian) AI master's expert reading (paid, needs an `fs_live_` key)
+- `ziwei_reading` — the 郑大钱 (Zheng Da Qian) AI master's expert reading (paid, needs an `FSFSKey` key)
 
 102 stars, sanhe four-transformations school, true solar time, **zero third-party charting library**. Charting is free and anonymous.
 
@@ -120,7 +120,7 @@
 { "mcpServers": { "ziwei": { "url": "https://www.fatestar.top/api/mcp" } } }
 ```
 
-Add `"headers": { "Authorization": "Bearer fs_live_xxxxxxxx" }` for the paid reading.
+Add `"headers": { "Authorization": "Bearer FSFSKey20260606XXXXXXXXXXXXXXXXXXXX" }` for the paid reading.
 
 Birth params: `year` `month` `day` `hour` (0–23) `gender` (male/female) required; `minute` `calendarType` (solar/lunar) `isLeapMonth` `longitude` `timezoneOffset` optional. `ziwei_transits` adds `targetYear/Month/Day/Hour`; `ziwei_reading` adds `question`.
 

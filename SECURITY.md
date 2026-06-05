@@ -31,6 +31,6 @@ Email **support@fatestar.top** with the subject prefixed `[Security]`, including
 
 ## 用户安全最佳实践 (Best Practices)
 
-- `fs_live_` key 存环境变量 / MCP 配置的 env，绝不写进代码或贴聊天框
+- `FSFSKey` key 存环境变量 / MCP 配置的 env，绝不写进代码或贴聊天框
 - Charting (`ziwei_chart` / `ziwei_transits`) 匿名即可，无需 key
 - 定期轮换 key / Rotate keys periodically
