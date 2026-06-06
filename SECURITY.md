@@ -31,6 +31,7 @@ Email **support@fatestar.top** with the subject prefixed `[Security]`, including
 
 ## 用户安全最佳实践 (Best Practices)
 
-- `FSFSKey` key 存环境变量 / MCP 配置的 env，绝不写进代码或贴聊天框
-- Charting (`ziwei_chart` / `ziwei_transits`) 匿名即可，无需 key
+- `FSFSKey` 存在支持保密配置的位置；远程 MCP 优先使用 `Authorization: Bearer ...` Header，客户端不支持 Header 时再作为 `ziwei_reading.apiKey` 工具参数传入
+- 不要把真实 Key 写进公开仓库、截图或聊天记录
+- Charting (`ziwei_chart` / `ziwei_transits`) 匿名即可，无需 Key
 - 定期轮换 key / Rotate keys periodically
